@@ -1,62 +1,68 @@
 import { StyleSheet, ScrollView, View, Text, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
+import { Walker } from '@/types/booking';
 
 export default function WalkingScreen() {
   const router = useRouter();
 
-  const walkers = [
+  const walkers: Walker[] = [
     {
-      id: 1,
+      id: 'walker-1',
       name: 'Mike Johnson',
-      experience: '5 years',
       rating: 4.9,
-      reviews: 128,
-      distance: '0.8 km',
-      price: '$25/hour',
-      emoji: '👨',
+      baseArea: 'Downtown',
+      price30: 25,
+      price60: 45,
+      availableToday: true,
     },
     {
-      id: 2,
+      id: 'walker-2',
       name: 'Emma Wilson',
-      experience: '3 years',
       rating: 4.8,
-      reviews: 95,
-      distance: '1.2 km',
-      price: '$22/hour',
-      emoji: '👩',
+      baseArea: 'Westside',
+      price30: 22,
+      price60: 40,
+      availableToday: true,
     },
     {
-      id: 3,
+      id: 'walker-3',
       name: 'David Chen',
-      experience: '7 years',
       rating: 5.0,
-      reviews: 203,
-      distance: '0.5 km',
-      price: '$30/hour',
-      emoji: '👨',
+      baseArea: 'Central Park',
+      price30: 30,
+      price60: 55,
+      availableToday: false,
     },
     {
-      id: 4,
+      id: 'walker-4',
       name: 'Sarah Martinez',
-      experience: '4 years',
       rating: 4.7,
-      reviews: 87,
-      distance: '1.5 km',
-      price: '$20/hour',
-      emoji: '👩',
+      baseArea: 'Eastside',
+      price30: 20,
+      price60: 35,
+      availableToday: true,
     },
     {
-      id: 5,
+      id: 'walker-5',
       name: 'James Brown',
-      experience: '6 years',
       rating: 4.9,
-      reviews: 156,
-      distance: '1.0 km',
-      price: '$28/hour',
-      emoji: '👨',
+      baseArea: 'Northside',
+      price30: 28,
+      price60: 50,
+      availableToday: true,
     },
   ];
+
+  const handleBookWalker = (walker: Walker) => {
+    router.push({
+      pathname: '/(tabs)/walker-details',
+      params: {
+        walkerId: walker.id,
+        walkerName: walker.name,
+      },
+    });
+  };
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
@@ -79,28 +85,38 @@ export default function WalkingScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Available Walkers</Text>
           {walkers.map((walker) => (
-            <TouchableOpacity key={walker.id} style={styles.walkerCard}>
+            <View key={walker.id} style={styles.walkerCard}>
               <View style={styles.walkerImage}>
-                <Text style={styles.walkerEmoji}>{walker.emoji}</Text>
+                <Text style={styles.walkerEmoji}>👤</Text>
               </View>
               <View style={styles.walkerInfo}>
-                <Text style={styles.walkerName}>{walker.name}</Text>
-                <Text style={styles.walkerExperience}>{walker.experience} experience</Text>
+                <View style={styles.walkerHeader}>
+                  <Text style={styles.walkerName}>{walker.name}</Text>
+                  {walker.availableToday && (
+                    <View style={styles.availableBadge}>
+                      <Text style={styles.availableText}>Available today</Text>
+                    </View>
+                  )}
+                </View>
                 <View style={styles.walkerMeta}>
                   <View style={styles.rating}>
                     <Text style={styles.star}>⭐</Text>
-                    <Text style={styles.ratingText}>
-                      {walker.rating} ({walker.reviews})
-                    </Text>
+                    <Text style={styles.ratingText}>{walker.rating}</Text>
                   </View>
-                  <View style={styles.distance}>
-                    <Text style={styles.locationPin}>📍</Text>
-                    <Text style={styles.distanceText}>{walker.distance}</Text>
-                  </View>
+                  <Text style={styles.areaText}>📍 {walker.baseArea}</Text>
                 </View>
-                <Text style={styles.walkerPrice}>{walker.price}</Text>
+                <View style={styles.priceRow}>
+                  <Text style={styles.priceText}>${walker.price30}/30min</Text>
+                  <Text style={styles.priceText}>${walker.price60}/60min</Text>
+                </View>
+                <TouchableOpacity
+                  style={styles.bookButton}
+                  onPress={() => handleBookWalker(walker)}
+                >
+                  <Text style={styles.bookButtonText}>Book</Text>
+                </TouchableOpacity>
               </View>
-            </TouchableOpacity>
+            </View>
           ))}
         </View>
       </ScrollView>
@@ -119,6 +135,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 20,
     paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E5E5',
   },
   backButton: {
     width: 40,
@@ -199,22 +217,33 @@ const styles = StyleSheet.create({
   },
   walkerInfo: {
     flex: 1,
-    justifyContent: 'center',
+  },
+  walkerHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 4,
   },
   walkerName: {
     fontSize: 18,
     fontWeight: 'bold',
     color: '#111',
-    marginBottom: 4,
   },
-  walkerExperience: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 8,
+  availableBadge: {
+    backgroundColor: '#E8F5E9',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 8,
+  },
+  availableText: {
+    fontSize: 10,
+    fontWeight: '600',
+    color: '#4CAF50',
   },
   walkerMeta: {
     flexDirection: 'row',
-    gap: 16,
+    alignItems: 'center',
+    gap: 12,
     marginBottom: 8,
   },
   rating: {
@@ -230,23 +259,31 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#FF6B35',
   },
-  distance: {
+  areaText: {
+    fontSize: 14,
+    color: '#666',
+  },
+  priceRow: {
     flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
+    gap: 12,
+    marginBottom: 12,
   },
-  locationPin: {
+  priceText: {
     fontSize: 14,
-  },
-  distanceText: {
-    fontSize: 14,
+    fontWeight: '600',
     color: '#FF6B35',
   },
-  walkerPrice: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#FF6B35',
-    marginTop: 4,
+  bookButton: {
+    backgroundColor: '#FF6B35',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    alignSelf: 'flex-start',
+  },
+  bookButtonText: {
+    color: '#fff',
+    fontWeight: '600',
+    fontSize: 14,
   },
 });
 

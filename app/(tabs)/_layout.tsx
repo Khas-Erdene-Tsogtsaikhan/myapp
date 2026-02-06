@@ -1,10 +1,8 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { HapticTab } from '@/components/haptic-tab';
 import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
 export default function TabLayout() {
@@ -22,11 +20,11 @@ export default function TabLayout() {
           borderTopWidth: 1,
           borderTopColor: '#E5E5E5',
           height: 70,
-          paddingBottom: 8,
+          paddingBottom: 6,
           paddingTop: 8,
         },
         tabBarLabelStyle: {
-          fontSize: 12,
+          fontSize: 11,
           fontWeight: '500',
         },
       }}>
@@ -63,12 +61,42 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="history"
+        name="bookings"
         options={{
-          title: 'History',
+          title: 'Bookings',
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol size={24} name="clock.fill" color={color} />
           ),
+        }}
+      />
+      <Tabs.Screen
+        name="walking"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="walker-details"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="confirm-booking"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="booking-details"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="history"
+        options={{
+          href: null,
         }}
       />
       <Tabs.Screen
