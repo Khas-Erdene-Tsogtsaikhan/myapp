@@ -19,6 +19,7 @@ export default function RootLayout() {
         <Stack.Screen name="veterinary" options={{ headerShown: false }} />
         <Stack.Screen name="grooming" options={{ headerShown: false }} />
         <Stack.Screen name="training" options={{ headerShown: false }} />
+        <Stack.Screen name="walking" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
       </Stack>
       <StatusBar style="auto" />

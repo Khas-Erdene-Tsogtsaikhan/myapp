@@ -1,7 +1,6 @@
-import { StyleSheet, ScrollView, View, Text, TouchableOpacity, Image } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Link } from 'expo-router';
-import { Colors } from '@/constants/theme';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   return (
@@ -65,12 +64,14 @@ export default function HomeScreen() {
                 <Text style={styles.categoryLabel}>Grooming</Text>
               </TouchableOpacity>
             </Link>
-            <TouchableOpacity style={styles.categoryItem}>
-              <View style={styles.categoryIcon}>
-                <Text style={styles.categoryEmoji}>🛒</Text>
-              </View>
-              <Text style={styles.categoryLabel}>Pet Store</Text>
-            </TouchableOpacity>
+            <Link href="/walking" asChild>
+              <TouchableOpacity style={styles.categoryItem}>
+                <View style={styles.categoryIcon}>
+                  <Text style={styles.categoryEmoji}>🚶</Text>
+                </View>
+                <Text style={styles.categoryLabel}>Walking</Text>
+              </TouchableOpacity>
+            </Link>
             <Link href="/training" asChild>
               <TouchableOpacity style={styles.categoryItem}>
                 <View style={styles.categoryIcon}>
