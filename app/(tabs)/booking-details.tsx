@@ -1,14 +1,53 @@
-import { StyleSheet, ScrollView, View, Text } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useBookings } from '@/store/BookingsStore';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useState } from 'react';
+import { ActivityIndicator, Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function BookingDetailsScreen() {
   const router = useRouter();
   const params = useLocalSearchParams<{ bookingId: string }>();
-  const { getBookingById } = useBookings();
+  const { getBookingById, cancelBooking } = useBookings();
+  const [cancelling, setCancelling] = useState(false);
 
   const booking = getBookingById(params.bookingId || '');
+
+  const handleCancelBooking = () => {
+    if (!booking) return;
+
+    Alert.alert(
+      'Cancel Booking',
+      'Are you sure you want to cancel this booking?',
+      [
+        {
+          text: 'No',
+          style: 'cancel',
+        },
+        {
+          text: 'Yes, Cancel',
+          style: 'destructive',
+          onPress: async () => {
+            setCancelling(true);
+            const { error } = await cancelBooking(booking.id);
+            setCancelling(false);
+
+            if (error) {
+              Alert.alert('Error', error.message || 'Failed to cancel booking');
+            } else {
+              Alert.alert('Success', 'Booking cancelled successfully', [
+                {
+                  text: 'OK',
+                  onPress: () => router.back(),
+                },
+              ]);
+            }
+          },
+        },
+      ]
+    );
+  };
+
+  const canCancel = booking && (booking.status === 'pending' || booking.status === 'accepted');
 
   if (!booking) {
     return (
@@ -114,6 +153,20 @@ export default function BookingDetailsScreen() {
             <Text style={styles.priceValue}>${booking.priceUSD.toFixed(2)}</Text>
           </View>
         </View>
+
+        {canCancel && (
+          <TouchableOpacity
+            style={[styles.cancelButton, cancelling && styles.cancelButtonDisabled]}
+            onPress={handleCancelBooking}
+            disabled={cancelling}
+          >
+            {cancelling ? (
+              <ActivityIndicator color="#fff" />
+            ) : (
+              <Text style={styles.cancelButtonText}>Cancel Booking</Text>
+            )}
+          </TouchableOpacity>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
@@ -224,6 +277,21 @@ const styles = StyleSheet.create({
   errorText: {
     fontSize: 18,
     color: '#666',
+  },
+  cancelButton: {
+    backgroundColor: '#F44336',
+    paddingVertical: 16,
+    borderRadius: 12,
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  cancelButtonDisabled: {
+    opacity: 0.6,
+  },
+  cancelButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
 

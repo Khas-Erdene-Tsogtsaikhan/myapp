@@ -1,12 +1,15 @@
-import { StyleSheet, ScrollView, View, Text, TouchableOpacity } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useRouter, useLocalSearchParams } from 'expo-router';
+import { useAuth } from '@/store/AuthStore';
 import { useBookings } from '@/store/BookingsStore';
-import { Booking } from '@/types/booking';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useState } from 'react';
+import { ActivityIndicator, Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ConfirmBookingScreen() {
   const router = useRouter();
   const { addBooking } = useBookings();
+  const { user } = useAuth();
+  const [submitting, setSubmitting] = useState(false);
   const params = useLocalSearchParams<{
     walkerId: string;
     walkerName: string;
@@ -48,9 +51,15 @@ export default function ConfirmBookingScreen() {
 
   const serviceName = `${selectedDuration}-min walk`;
 
-  const handleSubmitBooking = () => {
-    const booking: Booking = {
-      id: `booking-${Date.now()}`,
+  const handleSubmitBooking = async () => {
+    if (!user) {
+      Alert.alert('Error', 'You must be logged in to create a booking');
+      return;
+    }
+
+    setSubmitting(true);
+
+    const { error } = await addBooking({
       category: 'walking',
       providerId: walkerId,
       providerName: walkerName,
@@ -60,10 +69,15 @@ export default function ConfirmBookingScreen() {
       status: 'pending',
       addOns: selectedAddOns,
       notes,
-    };
+    });
 
-    addBooking(booking);
-    router.replace('/bookings');
+    setSubmitting(false);
+
+    if (error) {
+      Alert.alert('Error', error.message || 'Failed to create booking');
+    } else {
+      router.replace('/(tabs)/bookings');
+    }
   };
 
   const addOnLabels: Record<string, string> = {
@@ -136,8 +150,16 @@ export default function ConfirmBookingScreen() {
       </ScrollView>
 
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.submitButton} onPress={handleSubmitBooking}>
-          <Text style={styles.submitButtonText}>Submit Booking</Text>
+        <TouchableOpacity
+          style={[styles.submitButton, submitting && styles.submitButtonDisabled]}
+          onPress={handleSubmitBooking}
+          disabled={submitting}
+        >
+          {submitting ? (
+            <ActivityIndicator color="#fff" />
+          ) : (
+            <Text style={styles.submitButtonText}>Submit Booking</Text>
+          )}
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -251,6 +273,9 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: '600',
+  },
+  submitButtonDisabled: {
+    opacity: 0.6,
   },
 });
 

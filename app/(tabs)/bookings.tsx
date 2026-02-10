@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { StyleSheet, ScrollView, View, Text, TouchableOpacity } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useRouter } from 'expo-router';
 import { useBookings } from '@/store/BookingsStore';
 import { BookingStatus } from '@/types/booking';
+import { useRouter } from 'expo-router';
+import { useState } from 'react';
+import { ActivityIndicator, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const STATUSES: BookingStatus[] = ['pending', 'accepted', 'completed', 'cancelled'];
 
 export default function BookingsScreen() {
   const router = useRouter();
-  const { bookings } = useBookings();
+  const { bookings, loading, error } = useBookings();
   const [selectedStatus, setSelectedStatus] = useState<BookingStatus | 'all'>('all');
 
   const filteredBookings =
@@ -93,7 +93,18 @@ export default function BookingsScreen() {
 
       {/* Bookings List */}
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-        {filteredBookings.length === 0 ? (
+        {loading ? (
+          <View style={styles.emptyState}>
+            <ActivityIndicator size="large" color="#FF6B35" />
+            <Text style={styles.emptyStateText}>Loading bookings...</Text>
+          </View>
+        ) : error ? (
+          <View style={styles.emptyState}>
+            <Text style={styles.emptyStateEmoji}>⚠️</Text>
+            <Text style={styles.emptyStateText}>Error loading bookings</Text>
+            <Text style={styles.emptyStateSubtext}>{error}</Text>
+          </View>
+        ) : filteredBookings.length === 0 ? (
           <View style={styles.emptyState}>
             <Text style={styles.emptyStateEmoji}>📅</Text>
             <Text style={styles.emptyStateText}>No bookings found</Text>
@@ -167,20 +178,24 @@ const styles = StyleSheet.create({
     color: '#111',
   },
   statusFilter: {
-    maxHeight: 50,
+    maxHeight: 60,
     borderBottomWidth: 1,
     borderBottomColor: '#E5E5E5',
   },
   statusFilterContent: {
     paddingHorizontal: 20,
     paddingVertical: 12,
-    gap: 8,
+    gap: 10,
+    alignItems: 'center',
   },
   statusButton: {
-    paddingHorizontal: 16,
+    paddingHorizontal: 18,
     paddingVertical: 8,
     borderRadius: 20,
     backgroundColor: '#F5F5F5',
+    minWidth: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   statusButtonSelected: {
     backgroundColor: '#FF6B35',
