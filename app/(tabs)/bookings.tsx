@@ -33,7 +33,13 @@ export default function BookingsScreen() {
   };
 
   const getStatusLabel = (status: BookingStatus): string => {
-    return status.charAt(0).toUpperCase() + status.slice(1);
+    const labels: Record<BookingStatus, string> = {
+      pending: 'Хүлээгдэж буй',
+      accepted: 'Хүлээн авсан',
+      completed: 'Дууссан',
+      cancelled: 'Цуцлагдсан',
+    };
+    return labels[status] || status;
   };
 
   const formatDateTime = (isoString: string): string => {
@@ -50,7 +56,7 @@ export default function BookingsScreen() {
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>My Bookings</Text>
+        <Text style={styles.headerTitle}>Миний захиалгууд</Text>
       </View>
 
       {/* Status Filter */}
@@ -70,7 +76,7 @@ export default function BookingsScreen() {
               selectedStatus === 'all' && styles.statusButtonTextSelected,
             ]}
           >
-            All
+            Бүгд
           </Text>
         </TouchableOpacity>
         {STATUSES.map((status) => (
@@ -96,22 +102,22 @@ export default function BookingsScreen() {
         {loading ? (
           <View style={styles.emptyState}>
             <ActivityIndicator size="large" color="#FF6B35" />
-            <Text style={styles.emptyStateText}>Loading bookings...</Text>
+            <Text style={styles.emptyStateText}>Захиалгууд ачааллаж байна...</Text>
           </View>
         ) : error ? (
           <View style={styles.emptyState}>
             <Text style={styles.emptyStateEmoji}>⚠️</Text>
-            <Text style={styles.emptyStateText}>Error loading bookings</Text>
+            <Text style={styles.emptyStateText}>Захиалгууд ачаалахад алдаа гарлаа</Text>
             <Text style={styles.emptyStateSubtext}>{error}</Text>
           </View>
         ) : filteredBookings.length === 0 ? (
           <View style={styles.emptyState}>
             <Text style={styles.emptyStateEmoji}>📅</Text>
-            <Text style={styles.emptyStateText}>No bookings found</Text>
+            <Text style={styles.emptyStateText}>Захиалга олдсонгүй</Text>
             <Text style={styles.emptyStateSubtext}>
               {selectedStatus === 'all'
-                ? 'Your bookings will appear here'
-                : `No ${selectedStatus} bookings`}
+                ? 'Таны захиалгууд энд харагдана'
+                : `${selectedStatus} захиалга байхгүй`}
             </Text>
           </View>
         ) : (
@@ -148,7 +154,7 @@ export default function BookingsScreen() {
                   <Text style={styles.bookingPrice}>${booking.priceUSD.toFixed(2)}</Text>
                   {booking.addOns.length > 0 && (
                     <Text style={styles.bookingAddOns}>
-                      +{booking.addOns.length} add-on{booking.addOns.length > 1 ? 's' : ''}
+                      +{booking.addOns.length} нэмэлт{booking.addOns.length > 1 ? '' : ''}
                     </Text>
                   )}
                 </View>

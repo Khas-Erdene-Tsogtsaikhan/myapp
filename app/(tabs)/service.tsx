@@ -9,12 +9,12 @@ export default function ServiceScreen() {
         {/* Location Header */}
         <View style={styles.locationHeader}>
           <Text style={styles.locationIcon}>📍</Text>
-          <Text style={styles.locationText}>London, UK</Text>
+          <Text style={styles.locationText}>Лондон, Их Британи</Text>
         </View>
 
         {/* Promotional Banner */}
         <View style={styles.banner}>
-          <Text style={styles.bannerText}>Lets Find Specialist Doctor for Your Pet!</Text>
+          <Text style={styles.bannerText}>Амьтны таны мэргэжлийн эмчийг олъё!</Text>
           <View style={styles.bannerImage}>
             <Text style={styles.placeholderImage}>👨‍⚕️</Text>
           </View>
@@ -22,16 +22,16 @@ export default function ServiceScreen() {
 
         {/* Search Bar */}
         <View style={styles.searchBar}>
-          <Text style={styles.searchPlaceholder}>Search</Text>
+          <Text style={styles.searchPlaceholder}>Хайх</Text>
           <Text style={styles.searchIcon}>🔍</Text>
         </View>
 
         {/* Our Services Section */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Our Services</Text>
+            <Text style={styles.sectionTitle}>Манай үйлчилгээнүүд</Text>
             <TouchableOpacity>
-              <Text style={styles.seeAll}>See All</Text>
+              <Text style={styles.seeAll}>Бүгдийг харах</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.servicesGrid}>
@@ -39,40 +39,40 @@ export default function ServiceScreen() {
               <View style={styles.serviceIcon}>
                 <Text style={styles.serviceEmoji}>💉</Text>
               </View>
-              <Text style={styles.serviceLabel}>Vaccinations</Text>
+              <Text style={styles.serviceLabel}>Вакцинжуулалт</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.serviceItem}>
               <View style={styles.serviceIcon}>
                 <Text style={styles.serviceEmoji}>🏥</Text>
               </View>
-              <Text style={styles.serviceLabel}>Operations</Text>
+              <Text style={styles.serviceLabel}>Хагалгаа</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.serviceItem}>
               <View style={styles.serviceIcon}>
                 <Text style={styles.serviceEmoji}>🧠</Text>
               </View>
-              <Text style={styles.serviceLabel}>Behaviorals</Text>
+              <Text style={styles.serviceLabel}>Зан үйл</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.serviceItem}>
               <View style={styles.serviceIcon}>
                 <Text style={styles.serviceEmoji}>🦷</Text>
               </View>
-              <Text style={styles.serviceLabel}>Dentistry</Text>
+              <Text style={styles.serviceLabel}>Шүдний эмчилгээ</Text>
             </TouchableOpacity>
           </View>
         </View>
 
         {/* Best Specialists Nearby */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Best Specialists Nearby</Text>
+          <Text style={styles.sectionTitle}>Ойролцоох шилдэг мэргэжилтнүүд</Text>
           <Link href="/veterinary" asChild>
             <TouchableOpacity style={styles.specialistCard}>
               <View style={styles.specialistImage}>
                 <Text style={styles.placeholderImage}>👩‍⚕️</Text>
               </View>
               <View style={styles.specialistInfo}>
-                <Text style={styles.specialistName}>Dr. Anna Johanson</Text>
-                <Text style={styles.specialistSpecialty}>Veterinary Behavioral</Text>
+                <Text style={styles.specialistName}>Эмч. Анна Йохансон</Text>
+                <Text style={styles.specialistSpecialty}>Ветеринар зан үйл</Text>
                 <View style={styles.specialistMeta}>
                   <View style={styles.rating}>
                     <Text style={styles.star}>⭐</Text>
@@ -91,8 +91,8 @@ export default function ServiceScreen() {
               <Text style={styles.placeholderImage}>👨‍⚕️</Text>
             </View>
             <View style={styles.specialistInfo}>
-              <Text style={styles.specialistName}>Dr. Vernon Chwe</Text>
-              <Text style={styles.specialistSpecialty}>Veterinary Surgery</Text>
+              <Text style={styles.specialistName}>Эмч. Вернон Чве</Text>
+              <Text style={styles.specialistSpecialty}>Ветеринар хагалгаа</Text>
               <View style={styles.specialistMeta}>
                 <View style={styles.rating}>
                   <Text style={styles.star}>⭐</Text>

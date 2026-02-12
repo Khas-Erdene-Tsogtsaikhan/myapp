@@ -31,7 +31,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: 'Нүүр',
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol size={24} name="house.fill" color={color} />
           ),
@@ -40,7 +40,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="service"
         options={{
-          title: 'Service',
+          title: 'Үйлчилгээ',
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol size={24} name="heart.fill" color={color} />
           ),
@@ -49,30 +49,24 @@ export default function TabLayout() {
       <Tabs.Screen
         name="shop"
         options={{
-          title: 'Shop',
+          title: 'Дэлгүүр',
           tabBarIcon: ({ color, focused }) => (
             <View style={styles.shopButton}>
               <IconSymbol size={24} name="cart.fill" color="#fff" />
             </View>
           ),
           tabBarLabel: ({ color }) => (
-            <Text style={[styles.shopLabel, { color: '#FF6B35' }]}>Shop</Text>
+            <Text style={[styles.shopLabel, { color: '#FF6B35' }]}>Дэлгүүр</Text>
           ),
         }}
       />
       <Tabs.Screen
         name="bookings"
         options={{
-          title: 'Bookings',
+          title: 'Захиалга',
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol size={24} name="clock.fill" color={color} />
           ),
-        }}
-      />
-      <Tabs.Screen
-        name="walking"
-        options={{
-          href: null,
         }}
       />
       <Tabs.Screen
@@ -102,7 +96,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: 'Profile',
+          title: 'Профайл',
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol size={24} name="person.fill" color={color} />
           ),
@@ -120,7 +114,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF6B35',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: -20,
+    marginTop: -48,
     shadowColor: '#FF6B35',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,

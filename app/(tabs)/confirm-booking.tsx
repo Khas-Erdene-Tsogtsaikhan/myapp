@@ -49,11 +49,11 @@ export default function ConfirmBookingScreen() {
     parseInt(minutes, 10)
   ).toISOString();
 
-  const serviceName = `${selectedDuration}-min walk`;
+  const serviceName = `${selectedDuration} минут алхах`;
 
   const handleSubmitBooking = async () => {
     if (!user) {
-      Alert.alert('Error', 'You must be logged in to create a booking');
+      Alert.alert('Алдаа', 'Захиалга үүсгэхийн тулд та нэвтэрсэн байх ёстой');
       return;
     }
 
@@ -74,15 +74,15 @@ export default function ConfirmBookingScreen() {
     setSubmitting(false);
 
     if (error) {
-      Alert.alert('Error', error.message || 'Failed to create booking');
+      Alert.alert('Алдаа', error.message || 'Захиалга үүсгэх амжилтгүй');
     } else {
       router.replace('/(tabs)/bookings');
     }
   };
 
   const addOnLabels: Record<string, string> = {
-    'water-refill': 'Water Refill',
-    'photo-updates': 'Photo Updates',
+    'water-refill': 'Ус дүүргэх',
+    'photo-updates': 'Зургийн шинэчлэл',
   };
 
   return (
@@ -91,26 +91,26 @@ export default function ConfirmBookingScreen() {
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
           <Text style={styles.backIcon}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Confirm Booking</Text>
+        <Text style={styles.headerTitle}>Захиалга баталгаажуулах</Text>
         <View style={styles.placeholder} />
       </View>
 
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <View style={styles.summaryCard}>
-          <Text style={styles.cardTitle}>Booking Summary</Text>
+          <Text style={styles.cardTitle}>Захиалгын хураангуй</Text>
 
           <View style={styles.summaryRow}>
-            <Text style={styles.summaryLabel}>Walker:</Text>
+            <Text style={styles.summaryLabel}>Алхагч:</Text>
             <Text style={styles.summaryValue}>{walkerName}</Text>
           </View>
 
           <View style={styles.summaryRow}>
-            <Text style={styles.summaryLabel}>Service:</Text>
+            <Text style={styles.summaryLabel}>Үйлчилгээ:</Text>
             <Text style={styles.summaryValue}>{serviceName}</Text>
           </View>
 
           <View style={styles.summaryRow}>
-            <Text style={styles.summaryLabel}>Date:</Text>
+            <Text style={styles.summaryLabel}>Огноо:</Text>
             <Text style={styles.summaryValue}>
               {new Date(selectedDateISO).toLocaleDateString('en-US', {
                 weekday: 'long',
@@ -122,13 +122,13 @@ export default function ConfirmBookingScreen() {
           </View>
 
           <View style={styles.summaryRow}>
-            <Text style={styles.summaryLabel}>Time:</Text>
+            <Text style={styles.summaryLabel}>Цаг:</Text>
             <Text style={styles.summaryValue}>{selectedTimeSlot}</Text>
           </View>
 
           {selectedAddOns.length > 0 && (
             <View style={styles.summaryRow}>
-              <Text style={styles.summaryLabel}>Add-ons:</Text>
+              <Text style={styles.summaryLabel}>Нэмэлтүүд:</Text>
               <Text style={styles.summaryValue}>
                 {selectedAddOns.map((id) => addOnLabels[id] || id).join(', ')}
               </Text>
@@ -137,13 +137,13 @@ export default function ConfirmBookingScreen() {
 
           {notes && (
             <View style={styles.summaryRow}>
-              <Text style={styles.summaryLabel}>Notes:</Text>
+              <Text style={styles.summaryLabel}>Тэмдэглэл:</Text>
               <Text style={styles.summaryValue}>{notes}</Text>
             </View>
           )}
 
           <View style={styles.priceRow}>
-            <Text style={styles.priceLabel}>Total Price:</Text>
+            <Text style={styles.priceLabel}>Нийт үнэ:</Text>
             <Text style={styles.priceValue}>${totalPrice.toFixed(2)}</Text>
           </View>
         </View>
@@ -158,7 +158,7 @@ export default function ConfirmBookingScreen() {
           {submitting ? (
             <ActivityIndicator color="#fff" />
           ) : (
-            <Text style={styles.submitButtonText}>Submit Booking</Text>
+            <Text style={styles.submitButtonText}>Захиалга илгээх</Text>
           )}
         </TouchableOpacity>
       </View>

@@ -5,8 +5,8 @@ export default function ShopScreen() {
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.content}>
-        <Text style={styles.title}>Shop</Text>
-        <Text style={styles.subtitle}>Coming soon...</Text>
+        <Text style={styles.title}>Дэлгүүр</Text>
+        <Text style={styles.subtitle}>Удахгүй...</Text>
       </View>
     </SafeAreaView>
   );

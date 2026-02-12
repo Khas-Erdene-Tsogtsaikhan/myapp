@@ -5,8 +5,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const AVAILABLE_TIME_SLOTS = ['10:00', '11:30', '14:00', '16:30'];
 const ADD_ONS = [
-  { id: 'water-refill', label: 'Water Refill', price: 2 },
-  { id: 'photo-updates', label: 'Photo Updates', price: 5 },
+  { id: 'water-refill', label: 'Ус дүүргэх', price: 2 },
+  { id: 'photo-updates', label: 'Зургийн шинэчлэл', price: 5 },
 ];
 
 export default function WalkerDetailsScreen() {
@@ -74,7 +74,7 @@ export default function WalkerDetailsScreen() {
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         {/* Services Offered */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Services Offered</Text>
+          <Text style={styles.sectionTitle}>Саналын үйлчилгээнүүд</Text>
           <View style={styles.durationContainer}>
             <TouchableOpacity
               style={[
@@ -89,7 +89,7 @@ export default function WalkerDetailsScreen() {
                   selectedDuration === 30 && styles.durationTextSelected,
                 ]}
               >
-                30-min walk
+                30 минут алхах
               </Text>
               <Text
                 style={[
@@ -113,7 +113,7 @@ export default function WalkerDetailsScreen() {
                   selectedDuration === 60 && styles.durationTextSelected,
                 ]}
               >
-                60-min walk
+                60 минут алхах
               </Text>
               <Text
                 style={[
@@ -129,7 +129,7 @@ export default function WalkerDetailsScreen() {
 
         {/* Available Time Slots */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Available Time Slots (Today)</Text>
+          <Text style={styles.sectionTitle}>Боломжтой цагийн хуваарь (Өнөөдөр)</Text>
           <View style={styles.timeSlotsContainer}>
             {AVAILABLE_TIME_SLOTS.map((slot) => (
               <TouchableOpacity
@@ -155,7 +155,7 @@ export default function WalkerDetailsScreen() {
 
         {/* Add-ons */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Add-ons (Optional)</Text>
+          <Text style={styles.sectionTitle}>Нэмэлтүүд (Сонголттой)</Text>
           {ADD_ONS.map((addOn) => (
             <TouchableOpacity
               key={addOn.id}
@@ -175,10 +175,10 @@ export default function WalkerDetailsScreen() {
 
         {/* Notes */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Pet Behavior Notes (Optional)</Text>
+          <Text style={styles.sectionTitle}>Амьтны зан үйлийн тэмдэглэл (Сонголттой)</Text>
           <TextInput
             style={styles.notesInput}
-            placeholder="Any special instructions or notes about your pet..."
+            placeholder="Амьтны таны тухай тусгай зааварчилгаа эсвэл тэмдэглэл..."
             placeholderTextColor="#999"
             multiline
             numberOfLines={4}
@@ -191,7 +191,7 @@ export default function WalkerDetailsScreen() {
       {/* Continue Button */}
       <View style={styles.footer}>
         <View style={styles.priceSummary}>
-          <Text style={styles.totalLabel}>Total:</Text>
+          <Text style={styles.totalLabel}>Нийт:</Text>
           <Text style={styles.totalPrice}>${totalPrice}</Text>
         </View>
         <TouchableOpacity
@@ -199,7 +199,7 @@ export default function WalkerDetailsScreen() {
           onPress={handleContinue}
           disabled={!selectedTimeSlot}
         >
-          <Text style={styles.continueButtonText}>Continue</Text>
+          <Text style={styles.continueButtonText}>Үргэлжлүүлэх</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

@@ -70,20 +70,20 @@ export default function WalkingScreen() {
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
           <Text style={styles.backIcon}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Walking</Text>
+        <Text style={styles.headerTitle}>Алхах</Text>
         <View style={styles.placeholder} />
       </View>
 
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         {/* Search Bar */}
         <View style={styles.searchBar}>
-          <Text style={styles.searchPlaceholder}>Search walkers...</Text>
+          <Text style={styles.searchPlaceholder}>Алхагч хайх...</Text>
           <Text style={styles.searchIcon}>🔍</Text>
         </View>
 
         {/* Available Walkers Section */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Available Walkers</Text>
+          <Text style={styles.sectionTitle}>Боломжтой алхагчид</Text>
           {walkers.map((walker) => (
             <View key={walker.id} style={styles.walkerCard}>
               <View style={styles.walkerImage}>
@@ -94,7 +94,7 @@ export default function WalkingScreen() {
                   <Text style={styles.walkerName}>{walker.name}</Text>
                   {walker.availableToday && (
                     <View style={styles.availableBadge}>
-                      <Text style={styles.availableText}>Available today</Text>
+                      <Text style={styles.availableText}>Өнөөдөр боломжтой</Text>
                     </View>
                   )}
                 </View>
@@ -113,7 +113,7 @@ export default function WalkingScreen() {
                   style={styles.bookButton}
                   onPress={() => handleBookWalker(walker)}
                 >
-                  <Text style={styles.bookButtonText}>Book</Text>
+                  <Text style={styles.bookButtonText}>Захиалах</Text>
                 </TouchableOpacity>
               </View>
             </View>

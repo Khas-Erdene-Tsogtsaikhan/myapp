@@ -13,7 +13,7 @@ export default function LoginScreen() {
 
   const handleLogin = async () => {
     if (!email.trim() || !password.trim()) {
-      Alert.alert('Error', 'Please fill in all fields');
+      Alert.alert('Алдаа', 'Бүх талбарыг бөглөнө үү');
       return;
     }
 
@@ -22,7 +22,7 @@ export default function LoginScreen() {
     setLoading(false);
 
     if (error) {
-      Alert.alert('Login Failed', error.message);
+      Alert.alert('Нэвтрэх амжилтгүй', error.message);
     } else {
       router.replace('/(tabs)');
     }
@@ -31,15 +31,15 @@ export default function LoginScreen() {
   return (
     <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
       <View style={styles.content}>
-        <Text style={styles.title}>Welcome Back</Text>
-        <Text style={styles.subtitle}>Sign in to continue</Text>
+        <Text style={styles.title}>Дахин тавтай морил</Text>
+        <Text style={styles.subtitle}>Үргэлжлүүлэхийн тулд нэвтрэнэ үү</Text>
 
         <View style={styles.form}>
           <View style={styles.inputContainer}>
-            <Text style={styles.label}>Email</Text>
+            <Text style={styles.label}>Имэйл</Text>
             <TextInput
               style={styles.input}
-              placeholder="Enter your email"
+              placeholder="Имэйл хаягаа оруулна уу"
               placeholderTextColor="#999"
               value={email}
               onChangeText={setEmail}
@@ -50,10 +50,10 @@ export default function LoginScreen() {
           </View>
 
           <View style={styles.inputContainer}>
-            <Text style={styles.label}>Password</Text>
+            <Text style={styles.label}>Нууц үг</Text>
             <TextInput
               style={styles.input}
-              placeholder="Enter your password"
+              placeholder="Нууц үгээ оруулна уу"
               placeholderTextColor="#999"
               value={password}
               onChangeText={setPassword}
@@ -71,14 +71,14 @@ export default function LoginScreen() {
             {loading ? (
               <ActivityIndicator color="#fff" />
             ) : (
-              <Text style={styles.buttonText}>Sign In</Text>
+              <Text style={styles.buttonText}>Нэвтрэх</Text>
             )}
           </TouchableOpacity>
 
           <View style={styles.footer}>
-            <Text style={styles.footerText}>Don't have an account? </Text>
+            <Text style={styles.footerText}>Бүртгэл байхгүй юу? </Text>
             <TouchableOpacity onPress={() => router.push('/(auth)/signup')}>
-              <Text style={styles.linkText}>Sign Up</Text>
+              <Text style={styles.linkText}>Бүртгүүлэх</Text>
             </TouchableOpacity>
           </View>
         </View>

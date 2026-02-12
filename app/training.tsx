@@ -8,40 +8,40 @@ export default function TrainingScreen() {
   const courses = [
     {
       id: 1,
-      title: 'Obedience Courses',
-      instructor: 'By Jhon Smith',
+      title: 'Дарамжлах сургалт',
+      instructor: 'Жон Смит',
       rating: 4.9,
       reviews: 335,
       emoji: '🐕',
     },
     {
       id: 2,
-      title: 'Specialty Classes & Workshops',
-      instructor: 'By Duke Fuzzington',
+      title: 'Мэргэжлийн анги ба семинар',
+      instructor: 'Дюк Фуззингтон',
       rating: 5.0,
       reviews: 500,
       emoji: '🏃',
     },
     {
       id: 3,
-      title: 'Puppy Kindergarten and Playgroups',
-      instructor: 'By Sir Fluffington',
+      title: 'Нохойн цэцэрлэг ба тоглоомын бүлгүүд',
+      instructor: 'Ноён Флаффингтон',
       rating: 5.0,
       reviews: 500,
       emoji: '🐶',
     },
     {
       id: 4,
-      title: 'Canine Good Citizen Test',
-      instructor: 'By Baron Fuzzypaws',
+      title: 'Нохойн сайн иргэн тест',
+      instructor: 'Барон Фаззипаус',
       rating: 4.8,
       reviews: 220,
       emoji: '🏆',
     },
     {
       id: 5,
-      title: 'Therapy Dogs',
-      instructor: 'By Duke Fuzzington',
+      title: 'Эмчилгээний ноход',
+      instructor: 'Дюк Фуззингтон',
       rating: 5.0,
       reviews: 500,
       emoji: '❤️',
@@ -54,7 +54,7 @@ export default function TrainingScreen() {
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
           <Text style={styles.backIcon}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Training</Text>
+        <Text style={styles.headerTitle}>Сургалт</Text>
         <View style={styles.placeholder} />
       </View>
 

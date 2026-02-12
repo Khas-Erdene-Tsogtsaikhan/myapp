@@ -13,8 +13,8 @@ export default function HomeScreen() {
               <Text style={styles.profileInitial}>S</Text>
             </View>
             <View>
-              <Text style={styles.greeting}>Hello, Sarah</Text>
-              <Text style={styles.subGreeting}>Good Morning!</Text>
+              <Text style={styles.greeting}>Сайн байна уу, Сара</Text>
+              <Text style={styles.subGreeting}>Өглөөний мэнд!</Text>
             </View>
           </View>
           <TouchableOpacity style={styles.notificationButton}>
@@ -24,15 +24,15 @@ export default function HomeScreen() {
 
         {/* Search Bar */}
         <View style={styles.searchBar}>
-          <Text style={styles.searchPlaceholder}>search</Text>
+          <Text style={styles.searchPlaceholder}>хайх</Text>
           <Text style={styles.searchIcon}>🔍</Text>
         </View>
 
         {/* Featured Section */}
         <View style={styles.featuredCard}>
           <View style={styles.featuredContent}>
-            <Text style={styles.featuredTitle}>In Love With Pets?</Text>
-            <Text style={styles.featuredSubtitle}>Get all what you need for them</Text>
+            <Text style={styles.featuredTitle}>Амьтнуудыг хайрладаг уу?</Text>
+            <Text style={styles.featuredSubtitle}>Тэдэнд хэрэгтэй бүх зүйлийг аваарай</Text>
           </View>
           <View style={styles.featuredImage}>
             <Text style={styles.placeholderImage}>🐕</Text>
@@ -42,9 +42,9 @@ export default function HomeScreen() {
         {/* Category Section */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Category</Text>
+            <Text style={styles.sectionTitle}>Ангилал</Text>
             <TouchableOpacity>
-              <Text style={styles.seeAll}>See All</Text>
+              <Text style={styles.seeAll}>Бүгдийг харах</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.categoryGrid}>
@@ -53,7 +53,7 @@ export default function HomeScreen() {
                 <View style={styles.categoryIcon}>
                   <Text style={styles.categoryEmoji}>🩺</Text>
                 </View>
-                <Text style={styles.categoryLabel}>Veterinary</Text>
+                <Text style={styles.categoryLabel}>Ветеринар</Text>
               </TouchableOpacity>
             </Link>
             <Link href="/grooming" asChild>
@@ -61,7 +61,7 @@ export default function HomeScreen() {
                 <View style={styles.categoryIcon}>
                   <Text style={styles.categoryEmoji}>✂️</Text>
                 </View>
-                <Text style={styles.categoryLabel}>Grooming</Text>
+                <Text style={styles.categoryLabel}>Хооллолт</Text>
               </TouchableOpacity>
             </Link>
             <Link href="/walking" asChild>
@@ -69,7 +69,7 @@ export default function HomeScreen() {
                 <View style={styles.categoryIcon}>
                   <Text style={styles.categoryEmoji}>🚶</Text>
                 </View>
-                <Text style={styles.categoryLabel}>Walking</Text>
+                <Text style={styles.categoryLabel}>Алхах</Text>
               </TouchableOpacity>
             </Link>
             <Link href="/training" asChild>
@@ -77,7 +77,7 @@ export default function HomeScreen() {
                 <View style={styles.categoryIcon}>
                   <Text style={styles.categoryEmoji}>🎓</Text>
                 </View>
-                <Text style={styles.categoryLabel}>Training</Text>
+                <Text style={styles.categoryLabel}>Сургалт</Text>
               </TouchableOpacity>
             </Link>
           </View>
@@ -85,12 +85,12 @@ export default function HomeScreen() {
 
         {/* Event Section */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Event</Text>
+          <Text style={styles.sectionTitle}>Үйл явдал</Text>
           <View style={styles.eventCard}>
             <View style={styles.eventContent}>
-              <Text style={styles.eventTitle}>Find and Join in Special Events For Your Pets!</Text>
+              <Text style={styles.eventTitle}>Амьтны таны тусгай үйл явдлуудыг олж, нэгдээрэй!</Text>
               <TouchableOpacity style={styles.eventButton}>
-                <Text style={styles.eventButtonText}>See More</Text>
+                <Text style={styles.eventButtonText}>Дэлгэрэнгүй</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.eventImage}>
@@ -101,10 +101,10 @@ export default function HomeScreen() {
 
         {/* Community Section */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Community</Text>
+          <Text style={styles.sectionTitle}>Нийгэмлэг</Text>
           <View style={styles.communityCard}>
             <View style={styles.communityContent}>
-              <Text style={styles.communityTitle}>Connect and share with communities!</Text>
+              <Text style={styles.communityTitle}>Нийгэмлэгүүдтэй холбогдож, хуваалцаарай!</Text>
             </View>
             <View style={styles.communityImage}>
               <Text style={styles.placeholderImage}>👥</Text>

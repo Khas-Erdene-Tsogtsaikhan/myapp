@@ -5,8 +5,8 @@ export default function HistoryScreen() {
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.content}>
-        <Text style={styles.title}>History</Text>
-        <Text style={styles.subtitle}>Coming soon...</Text>
+        <Text style={styles.title}>Түүх</Text>
+        <Text style={styles.subtitle}>Удахгүй...</Text>
       </View>
     </SafeAreaView>
   );

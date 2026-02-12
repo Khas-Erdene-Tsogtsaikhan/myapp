@@ -14,17 +14,17 @@ export default function SignupScreen() {
 
   const handleSignup = async () => {
     if (!email.trim() || !password.trim() || !confirmPassword.trim()) {
-      Alert.alert('Error', 'Please fill in all fields');
+      Alert.alert('Алдаа', 'Бүх талбарыг бөглөнө үү');
       return;
     }
 
     if (password !== confirmPassword) {
-      Alert.alert('Error', 'Passwords do not match');
+      Alert.alert('Алдаа', 'Нууц үгүүд тохирохгүй байна');
       return;
     }
 
     if (password.length < 6) {
-      Alert.alert('Error', 'Password must be at least 6 characters');
+      Alert.alert('Алдаа', 'Нууц үг дор хаяж 6 тэмдэгт байх ёстой');
       return;
     }
 
@@ -33,14 +33,14 @@ export default function SignupScreen() {
     setLoading(false);
 
     if (error) {
-      Alert.alert('Sign Up Failed', error.message);
+      Alert.alert('Бүртгүүлэх амжилтгүй', error.message);
     } else {
       Alert.alert(
-        'Success',
-        'Account created! Please check your email to verify your account.',
+        'Амжилттай',
+        'Бүртгэл үүслээ! Бүртгэлээ баталгаажуулахын тулд имэйлээ шалгана уу.',
         [
           {
-            text: 'OK',
+            text: 'Тийм',
             onPress: () => router.replace('/(auth)/login'),
           },
         ]
@@ -51,15 +51,15 @@ export default function SignupScreen() {
   return (
     <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
       <View style={styles.content}>
-        <Text style={styles.title}>Create Account</Text>
-        <Text style={styles.subtitle}>Sign up to get started</Text>
+        <Text style={styles.title}>Бүртгэл үүсгэх</Text>
+        <Text style={styles.subtitle}>Эхлэхийн тулд бүртгүүлнэ үү</Text>
 
         <View style={styles.form}>
           <View style={styles.inputContainer}>
-            <Text style={styles.label}>Email</Text>
+            <Text style={styles.label}>Имэйл</Text>
             <TextInput
               style={styles.input}
-              placeholder="Enter your email"
+              placeholder="Имэйл хаягаа оруулна уу"
               placeholderTextColor="#999"
               value={email}
               onChangeText={setEmail}
@@ -70,10 +70,10 @@ export default function SignupScreen() {
           </View>
 
           <View style={styles.inputContainer}>
-            <Text style={styles.label}>Password</Text>
+            <Text style={styles.label}>Нууц үг</Text>
             <TextInput
               style={styles.input}
-              placeholder="Enter your password"
+              placeholder="Нууц үгээ оруулна уу"
               placeholderTextColor="#999"
               value={password}
               onChangeText={setPassword}
@@ -84,10 +84,10 @@ export default function SignupScreen() {
           </View>
 
           <View style={styles.inputContainer}>
-            <Text style={styles.label}>Confirm Password</Text>
+            <Text style={styles.label}>Нууц үг баталгаажуулах</Text>
             <TextInput
               style={styles.input}
-              placeholder="Confirm your password"
+              placeholder="Нууц үгээ дахин оруулна уу"
               placeholderTextColor="#999"
               value={confirmPassword}
               onChangeText={setConfirmPassword}
@@ -105,14 +105,14 @@ export default function SignupScreen() {
             {loading ? (
               <ActivityIndicator color="#fff" />
             ) : (
-              <Text style={styles.buttonText}>Sign Up</Text>
+              <Text style={styles.buttonText}>Бүртгүүлэх</Text>
             )}
           </TouchableOpacity>
 
           <View style={styles.footer}>
-            <Text style={styles.footerText}>Already have an account? </Text>
+            <Text style={styles.footerText}>Бүртгэл аль хэдийн байна уу? </Text>
             <TouchableOpacity onPress={() => router.push('/(auth)/login')}>
-              <Text style={styles.linkText}>Sign In</Text>
+              <Text style={styles.linkText}>Нэвтрэх</Text>
             </TouchableOpacity>
           </View>
         </View>

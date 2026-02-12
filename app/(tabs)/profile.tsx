@@ -8,13 +8,13 @@ export default function ProfileScreen() {
   const { user, signOut } = useAuth();
 
   const handleSignOut = async () => {
-    Alert.alert('Sign Out', 'Are you sure you want to sign out?', [
+    Alert.alert('Гарах', 'Та гарахдаа итгэлтэй байна уу?', [
       {
-        text: 'Cancel',
+        text: 'Цуцлах',
         style: 'cancel',
       },
       {
-        text: 'Sign Out',
+        text: 'Гарах',
         style: 'destructive',
         onPress: async () => {
           await signOut();
@@ -27,14 +27,14 @@ export default function ProfileScreen() {
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.content}>
-        <Text style={styles.title}>Profile</Text>
+        <Text style={styles.title}>Профайл</Text>
         {user && (
           <View style={styles.userInfo}>
             <Text style={styles.email}>{user.email}</Text>
           </View>
         )}
         <TouchableOpacity style={styles.signOutButton} onPress={handleSignOut}>
-          <Text style={styles.signOutText}>Sign Out</Text>
+          <Text style={styles.signOutText}>Гарах</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

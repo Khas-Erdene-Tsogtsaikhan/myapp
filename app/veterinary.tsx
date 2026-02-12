@@ -17,7 +17,7 @@ export default function VeterinaryScreen() {
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
           <Text style={styles.backIcon}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Veterinary</Text>
+        <Text style={styles.headerTitle}>Ветеринар</Text>
         <View style={styles.placeholder} />
       </View>
 
@@ -31,40 +31,40 @@ export default function VeterinaryScreen() {
 
         {/* Doctor Info Card */}
         <View style={styles.infoCard}>
-          <Text style={styles.doctorName}>Dr. Anna Jhonason</Text>
-          <Text style={styles.specialty}>Veterinary Behavioral</Text>
+          <Text style={styles.doctorName}>Эмч. Анна Йохансон</Text>
+          <Text style={styles.specialty}>Ветеринар зан үйл</Text>
 
           {/* Info Cards */}
           <View style={styles.infoCards}>
             <View style={styles.infoCardItem}>
-              <Text style={styles.infoCardLabel}>Experience</Text>
-              <Text style={styles.infoCardValue}>11 years</Text>
+              <Text style={styles.infoCardLabel}>Туршлага</Text>
+              <Text style={styles.infoCardValue}>11 жил</Text>
             </View>
             <View style={styles.infoCardItem}>
-              <Text style={styles.infoCardLabel}>Price</Text>
+              <Text style={styles.infoCardLabel}>Үнэ</Text>
               <Text style={styles.infoCardValue}>$250</Text>
             </View>
             <View style={styles.infoCardItem}>
-              <Text style={styles.infoCardLabel}>Location</Text>
-              <Text style={styles.infoCardValue}>2.5 Km</Text>
+              <Text style={styles.infoCardLabel}>Байршил</Text>
+              <Text style={styles.infoCardValue}>2.5 км</Text>
             </View>
           </View>
 
           {/* About Section */}
           <View style={styles.aboutSection}>
-            <Text style={styles.sectionTitle}>About</Text>
+            <Text style={styles.sectionTitle}>Тухай</Text>
             <Text style={styles.aboutText}>
-              Dr. Maria Naiis is a highly experienced veterinarian with 11 years of dedicated practice, showcasing a professional approach to pet care and behavioral therapy.
+              Эмч. Мария Найис нь 11 жилийн туршлагатай өндөр мэргэшсэн ветеринар бөгөөд амьтны асрах болон зан үйлийн эмчилгээнд мэргэжлийн хандлагыг харуулдаг.
             </Text>
           </View>
 
           {/* Available Days */}
           <View style={styles.daysSection}>
             <View style={styles.daysHeader}>
-              <Text style={styles.sectionTitle}>Available Days</Text>
+              <Text style={styles.sectionTitle}>Боломжтой өдрүүд</Text>
               <View style={styles.calendarInfo}>
                 <Text style={styles.calendarIcon}>📅</Text>
-                <Text style={styles.calendarText}>October, 2023</Text>
+                <Text style={styles.calendarText}>Аравдугаар сар, 2023</Text>
               </View>
             </View>
             <View style={styles.daysContainer}>
@@ -92,7 +92,7 @@ export default function VeterinaryScreen() {
 
           {/* Available Time */}
           <View style={styles.timeSection}>
-            <Text style={styles.sectionTitle}>Available Time</Text>
+            <Text style={styles.sectionTitle}>Боломжтой цаг</Text>
             <View style={styles.timeContainer}>
               {availableTimes.map((time) => (
                 <TouchableOpacity
@@ -122,10 +122,10 @@ export default function VeterinaryScreen() {
       <View style={styles.actionButtons}>
         <TouchableOpacity style={styles.locationButton}>
           <Text style={styles.locationIcon}>📍</Text>
-          <Text style={styles.locationButtonText}>See Location</Text>
+          <Text style={styles.locationButtonText}>Байршил харах</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.bookButton}>
-          <Text style={styles.bookButtonText}>Book Now</Text>
+          <Text style={styles.bookButtonText}>Одоо захиалах</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

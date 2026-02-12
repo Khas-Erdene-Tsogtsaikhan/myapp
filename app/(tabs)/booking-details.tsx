@@ -16,15 +16,15 @@ export default function BookingDetailsScreen() {
     if (!booking) return;
 
     Alert.alert(
-      'Cancel Booking',
-      'Are you sure you want to cancel this booking?',
+      'Захиалга цуцлах',
+      'Та энэ захиалгыг цуцлахдаа итгэлтэй байна уу?',
       [
         {
-          text: 'No',
+          text: 'Үгүй',
           style: 'cancel',
         },
         {
-          text: 'Yes, Cancel',
+          text: 'Тийм, Цуцлах',
           style: 'destructive',
           onPress: async () => {
             setCancelling(true);
@@ -32,11 +32,11 @@ export default function BookingDetailsScreen() {
             setCancelling(false);
 
             if (error) {
-              Alert.alert('Error', error.message || 'Failed to cancel booking');
+              Alert.alert('Алдаа', error.message || 'Захиалга цуцлах амжилтгүй');
             } else {
-              Alert.alert('Success', 'Booking cancelled successfully', [
+              Alert.alert('Амжилттай', 'Захиалга амжилттай цуцлагдлаа', [
                 {
-                  text: 'OK',
+                  text: 'Тийм',
                   onPress: () => router.back(),
                 },
               ]);
@@ -53,7 +53,7 @@ export default function BookingDetailsScreen() {
     return (
       <SafeAreaView style={styles.container} edges={['top']}>
         <View style={styles.errorContainer}>
-          <Text style={styles.errorText}>Booking not found</Text>
+          <Text style={styles.errorText}>Захиалга олдсонгүй</Text>
         </View>
       </SafeAreaView>
     );
@@ -87,24 +87,24 @@ export default function BookingDetailsScreen() {
   };
 
   const addOnLabels: Record<string, string> = {
-    'water-refill': 'Water Refill',
-    'photo-updates': 'Photo Updates',
+    'water-refill': 'Ус дүүргэх',
+    'photo-updates': 'Зургийн шинэчлэл',
   };
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.header}>
         <Text style={styles.backButton} onPress={() => router.back()}>
-          ← Back
+          ← Буцах
         </Text>
-        <Text style={styles.headerTitle}>Booking Details</Text>
+        <Text style={styles.headerTitle}>Захиалгын дэлгэрэнгүй</Text>
         <View style={styles.placeholder} />
       </View>
 
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <View style={styles.detailsCard}>
           <View style={styles.statusSection}>
-            <Text style={styles.statusLabel}>Status</Text>
+            <Text style={styles.statusLabel}>Төлөв</Text>
             <View
               style={[
                 styles.statusPill,
@@ -112,29 +112,32 @@ export default function BookingDetailsScreen() {
               ]}
             >
               <Text style={[styles.statusText, { color: getStatusColor(booking.status) }]}>
-                {booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}
+                {booking.status === 'pending' ? 'Хүлээгдэж буй' :
+                 booking.status === 'accepted' ? 'Хүлээн авсан' :
+                 booking.status === 'completed' ? 'Дууссан' :
+                 booking.status === 'cancelled' ? 'Цуцлагдсан' : booking.status}
               </Text>
             </View>
           </View>
 
           <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Service</Text>
+            <Text style={styles.detailLabel}>Үйлчилгээ</Text>
             <Text style={styles.detailValue}>{booking.serviceName}</Text>
           </View>
 
           <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Provider</Text>
+            <Text style={styles.detailLabel}>Үйлчилгээ үзүүлэгч</Text>
             <Text style={styles.detailValue}>{booking.providerName}</Text>
           </View>
 
           <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Date & Time</Text>
+            <Text style={styles.detailLabel}>Огноо ба цаг</Text>
             <Text style={styles.detailValue}>{formatDateTime(booking.startTimeISO)}</Text>
           </View>
 
           {booking.addOns.length > 0 && (
             <View style={styles.detailRow}>
-              <Text style={styles.detailLabel}>Add-ons</Text>
+              <Text style={styles.detailLabel}>Нэмэлтүүд</Text>
               <Text style={styles.detailValue}>
                 {booking.addOns.map((id) => addOnLabels[id] || id).join(', ')}
               </Text>
@@ -143,13 +146,13 @@ export default function BookingDetailsScreen() {
 
           {booking.notes && (
             <View style={styles.detailRow}>
-              <Text style={styles.detailLabel}>Notes</Text>
+              <Text style={styles.detailLabel}>Тэмдэглэл</Text>
               <Text style={styles.detailValue}>{booking.notes}</Text>
             </View>
           )}
 
           <View style={styles.priceSection}>
-            <Text style={styles.priceLabel}>Total Price</Text>
+            <Text style={styles.priceLabel}>Нийт үнэ</Text>
             <Text style={styles.priceValue}>${booking.priceUSD.toFixed(2)}</Text>
           </View>
         </View>
@@ -163,7 +166,7 @@ export default function BookingDetailsScreen() {
             {cancelling ? (
               <ActivityIndicator color="#fff" />
             ) : (
-              <Text style={styles.cancelButtonText}>Cancel Booking</Text>
+              <Text style={styles.cancelButtonText}>Захиалга цуцлах</Text>
             )}
           </TouchableOpacity>
         )}

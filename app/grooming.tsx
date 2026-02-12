@@ -6,12 +6,12 @@ export default function GroomingScreen() {
   const router = useRouter();
 
   const services = [
-    { id: 1, name: 'Bathing & Drying', emoji: '🚿' },
-    { id: 2, name: 'Hair Trimming', emoji: '✂️' },
-    { id: 3, name: 'Nail Trimming', emoji: '💅' },
-    { id: 4, name: 'Ear Cleaning', emoji: '👂' },
-    { id: 5, name: 'Teeth Brushing', emoji: '🦷' },
-    { id: 6, name: 'Flea & Tick', emoji: '🐛' },
+    { id: 1, name: 'Угаах & Хатаах', emoji: '🚿' },
+    { id: 2, name: 'Үс тайрах', emoji: '✂️' },
+    { id: 3, name: 'Хумс тайрах', emoji: '💅' },
+    { id: 4, name: 'Чих цэвэрлэх', emoji: '👂' },
+    { id: 5, name: 'Шүд угаах', emoji: '🦷' },
+    { id: 6, name: 'Блох & Бээс', emoji: '🐛' },
   ];
 
   return (
@@ -20,7 +20,7 @@ export default function GroomingScreen() {
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
           <Text style={styles.backIcon}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Grooming</Text>
+        <Text style={styles.headerTitle}>Хооллолт</Text>
         <View style={styles.placeholder} />
       </View>
 
@@ -28,8 +28,8 @@ export default function GroomingScreen() {
         {/* Promotional Banner */}
         <View style={styles.banner}>
           <View style={styles.bannerContent}>
-            <Text style={styles.bannerDiscount}>60% OFF</Text>
-            <Text style={styles.bannerSubtext}>On hair & spa treatment</Text>
+            <Text style={styles.bannerDiscount}>60% ХЯМДРУУЛСАН</Text>
+            <Text style={styles.bannerSubtext}>Үс болон спа эмчилгээнд</Text>
           </View>
           <View style={styles.bannerImage}>
             <Text style={styles.placeholderImage}>🐕</Text>
@@ -38,16 +38,16 @@ export default function GroomingScreen() {
 
         {/* Search Bar */}
         <View style={styles.searchBar}>
-          <Text style={styles.searchPlaceholder}>Search</Text>
+          <Text style={styles.searchPlaceholder}>Хайх</Text>
           <Text style={styles.searchIcon}>🔍</Text>
         </View>
 
         {/* Our Services Section */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Our Services</Text>
+            <Text style={styles.sectionTitle}>Манай үйлчилгээнүүд</Text>
             <TouchableOpacity>
-              <Text style={styles.seeAll}>See All</Text>
+              <Text style={styles.seeAll}>Бүгдийг харах</Text>
             </TouchableOpacity>
           </View>
 
